@@ -1,10 +1,21 @@
 const express = require('express');
+
 const { calculateEquity } = require('poker-odds');
 
+
+const iterations = 1000000000; 
+const exhaustive = false; 
 
 try {
     const app = express();
     app.use("/oddsHandler", function(request, response){
+        let playerCards = request.query.playerCards;
+        let tableCards = request.query.tableCards;
+        parserPlayerCards(playerCards);
+        let board = parserTableCards(tableCards);
+        let hands = parserPlayerCards(playerCards);
+        
+        response.send(JSON.stringify(calculateEquity(hands, board, iterations, exhaustive)));
     });
     app.listen(8080);
 } catch (error) {
@@ -38,4 +49,3 @@ function fixCard(card){
     
     return `${cardValue.toUpperCase()}${cardType.toLowerCase()}`;
 }
-
