@@ -1,0 +1,23 @@
+{
+  "name": "texas-holdem",
+  "version": "1.0.0",
+  "description": "Texas Hold'em probabilities calc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderIbraimov/texas-hold-em-probs.git"
+  },
+  "author": "AlexanderIbraimov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderIbraimov/texas-hold-em-probs/issues"
+  },
+  "homepage": "https://github.com/AlexanderIbraimov/texas-hold-em-probs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "poker-odds": "^1.0.1"
+  }
+}
