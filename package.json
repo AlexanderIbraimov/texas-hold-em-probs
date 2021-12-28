@@ -18,6 +18,6 @@
   "homepage": "https://github.com/AlexanderIbraimov/texas-hold-em-probs#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "poker-odds": "^1.0.1"
+    "poker-odds-calc": "^0.0.14"
   }
 }
