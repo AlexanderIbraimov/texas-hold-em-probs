@@ -25,10 +25,10 @@ try {
             table.setBoard(board);
             response.send(getProbabilityResult(table.calculate()));
         }
-        catch {
+        catch(error) {
             response.send({
                 isSuccess: false,
-                message: "Invalid input data format"
+                message: error
             });
         }
     });
