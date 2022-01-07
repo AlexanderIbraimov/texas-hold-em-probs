@@ -68,20 +68,7 @@ function getProbabilityResult(calc){
             'tieProb':{
                 'probability':p.data.ties / iterations,
                 'count':p.ties 
-            },
-            // 'ranks':
-            // {
-            //     'ROYAL_FLUSH':p.data.ranks.ROYAL_FLUSH/ iterations,
-            //     'STRAIGHT':p.data.ranks.STRAIGHT/ iterations,
-            //     'STRAIGHT_FLUSH':p.data.ranks.STRAIGHT_FLUSH/ iterations,
-            //     'QUADS':p.data.ranks.QUADS/ iterations,
-            //     'FULL_HOUSE':p.data.ranks.FULL_HOUSE/ iterations,
-            //     'FLUSH':p.data.ranks.FLUSH/ iterations,
-            //     'TREE_OF_A_KIND':p.data.ranks.TREE_OF_A_KIND/ iterations,
-            //     'TWO_PAIRS':p.data.ranks.TWO_PAIRS/ iterations,
-            //     'ONE_PAIR':p.data.ranks.ONE_PAIR/ iterations,
-            //     'HIGH_CARDS':p.data.ranks.HIGH_CARDS/ iterations,
-            // }
+            }
         };
 
         royalFlush += p.data.ranks.ROYAL_FLUSH;
@@ -110,18 +97,6 @@ function getProbabilityResult(calc){
             'twoPairs':twoPairs / iterations/ 6,
             'onePair':onePair / iterations/ 6,
             'highCard':highCard / iterations/ 6
-        },
-        'additionalStats':{
-            'redsOver25':0.0,
-            'redsUnder25':0.0,
-            'clubsOver15':0.0,
-            'clubsUnder15':0.0,
-            'heartsOver15':0.0,
-            'heartsUnder15':0.0,
-            'diamondsOver15':0.0,
-            'diamondsUnder15':0.0,
-            'spadesOver15':0.0,
-            'spadesUnder15':0.0,
         }
     }
 }
