@@ -1,6 +1,6 @@
 const express = require('express');
 const {TexasHoldem, SixPlusHoldem, Omaha} = require('poker-odds-calc');
-
+var port = process.env.PORT || 3000;
 try {
     const app = express();
     app.use("/oddsHandler", function(request, response){
@@ -17,7 +17,7 @@ try {
         let result = Table.calculate();
         response.send(getProbabilityResult(result));
     });
-    app.listen(8080);
+    app.listen(port);
 } catch (error) {
     console.log(error);
 }
