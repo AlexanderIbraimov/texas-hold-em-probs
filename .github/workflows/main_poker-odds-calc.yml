@@ -46,6 +46,11 @@ jobs:
         with:
           name: node-app
 
+      - name: create env file
+        run: | 
+           touch .env
+           echo API_KEY =${{ secrets.API_KEY }} >> .env
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
