@@ -1,21 +1,36 @@
 const express = require('express');
 const {TexasHoldem, SixPlusHoldem, Omaha} = require('poker-odds-calc');
 var port = process.env.PORT || 3000;
+
 try {
     const app = express();
     app.use("/oddsHandler", function(request, response){
-        let playerCards = request.query.playerCards;
-        let tableCards = request.query.tableCards;
-        parserPlayerCards(playerCards);
-        let board = parserTableCards(tableCards);
-        let hands = parserPlayerCards(playerCards);
-        let Table = new TexasHoldem();
-        hands.forEach(h=>{
-            Table.addPlayer(h);
-        });
-        Table.setBoard(board);
-        let result = Table.calculate();
-        response.send(getProbabilityResult(result));
+        if(!request.query.playerCards){
+            response.send({
+                isSuccess: false,
+                message: "playerCards cannot be empty"
+            });
+        }
+        if(!request.query.tableCards){
+            response.send({
+                isSuccess: false,
+                message: "tableCards cannot be empty"
+            });
+        }
+        try{
+            let board = parserTableCards(request.query.tableCards);
+            let players = parserPlayerCards(request.query.playerCards);
+            let table = new TexasHoldem();
+            players.forEach(p=>table.addPlayer(p));
+            table.setBoard(board);
+            response.send(getProbabilityResult(table.calculate()));
+        }
+        catch {
+            response.send({
+                isSuccess: false,
+                message: "Invalid input data format"
+            });
+        }
     });
     app.listen(port);
 } catch (error) {
@@ -25,12 +40,10 @@ try {
 function parserPlayerCards(playerCards) {
     let hands = playerCards.split(';').filter(c=>c);;
     let result = [];
-    
     hands.forEach(hand => {
         var cards = hand.split(',').filter(c=>c).map(c=> fixCard(c));
         result.push(cards);
     });
-    
     return result;
 }
 
@@ -70,7 +83,7 @@ function getProbabilityResult(calc){
                 'count':p.ties 
             }
         };
-
+        
         royalFlush += p.data.ranks.ROYAL_FLUSH;
         straightFlush += p.data.ranks.STRAIGHT_FLUSH;
         fourOfAKind += p.data.ranks.QUADS;
@@ -85,6 +98,7 @@ function getProbabilityResult(calc){
     });
     
     return {
+        'isSuccess': true,
         'playerStats':playerStats,
         'handStats': {
             'royalFlush':royalFlush / iterations / 6,
