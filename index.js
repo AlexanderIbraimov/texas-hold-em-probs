@@ -6,16 +6,10 @@ try {
     const app = express();
     app.use("/oddsHandler", function(request, response){
         if(!request.query.playerCards){
-            response.send({
-                isSuccess: false,
-                message: "playerCards cannot be empty"
-            });
+            response.send({isSuccess: false, message: "playerCards cannot be empty"});
         }
         if(!request.query.tableCards){
-            response.send({
-                isSuccess: false,
-                message: "tableCards cannot be empty"
-            });
+            response.send({isSuccess: false, message: "tableCards cannot be empty"});
         }
         try{
             let board = parserTableCards(request.query.tableCards);
@@ -26,10 +20,7 @@ try {
             response.send(getProbabilityResult(table.calculate()));
         }
         catch(error) {
-            response.send({
-                isSuccess: false,
-                message: error
-            });
+            response.send({isSuccess: false, message: error});
         }
     });
     app.listen(port);
