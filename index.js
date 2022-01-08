@@ -1,14 +1,15 @@
 const express = require('express');
 const {TexasHoldem, SixPlusHoldem, Omaha} = require('poker-odds-calc');
+require('dotenv').load();
 var port = process.env.PORT || 3000;
 var authToken = process.env.API_KEY || 'A5F6F2A0-CE93-4A4E-AEC6-FC75F30888A7';
 
 try {
     const app = express();
     app.use("/oddsHandler", function(request, response){
-        var token = request.get('token');
+        var token = request.get('API_KEY');
         if(token != authToken){
-            response.send({isSuccess: false, message: "Access denied"});
+            response.send({isSuccess: false, message: `Access denied! API_TOKEN = ${authToken} != ${token}`});
         }
         if(!request.query.playerCards){
             response.send({isSuccess: false, message: "playerCards cannot be empty"});
