@@ -9,13 +9,13 @@ try {
     app.use("/oddsHandler", function(request, response){
         var token = request.get('API_KEY');
         if(token != authToken){
-            response.send({isSuccess: false, message: `Access denied! API_TOKEN = ${authToken} != ${token}`});
+            response.send({isSuccess: false, message: 'Access denied'});
         }
         if(!request.query.playerCards){
-            response.send({isSuccess: false, message: "playerCards cannot be empty"});
+            response.send({isSuccess: false, message: 'playerCards cannot be empty'});
         }
         if(!request.query.tableCards){
-            response.send({isSuccess: false, message: "tableCards cannot be empty"});
+            response.send({isSuccess: false, message: 'tableCards cannot be empty'});
         }
         try{
             let board = parserTableCards(request.query.tableCards);
@@ -77,7 +77,7 @@ function getProbabilityResult(calc){
             'winProb':p.data.wins / iterations,
             'tieProb':{
                 'probability':p.data.ties / iterations,
-                'count':p.ties 
+                'count':p.data.ties 
             }
         };
         
