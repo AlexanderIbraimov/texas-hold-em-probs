@@ -6,7 +6,8 @@
 - This calculator contains only one method that returns probabilities for Texas Hold'em
 - This server is a wrapper over the [poker-odds-calc](https://www.npmjs.com/package/poker-odds-calc) library
 
-###Usage
+### Usage
+
 Request example:
 http://localhost:3000/oddsHandler?playerCards=S2,SQ;D6,D7;C2,C3;C4,C5;C10,CQ&tableCards=H5,HK,HQ
 
