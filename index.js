@@ -1,6 +1,6 @@
 const express = require('express');
 const {TexasHoldem, SixPlusHoldem, Omaha} = require('poker-odds-calc');
-require('dotenv').load();
+require('dotenv').config();
 var port = process.env.PORT || 3000;
 var authToken = process.env.API_KEY || 'A5F6F2A0-CE93-4A4E-AEC6-FC75F30888A7';
 
