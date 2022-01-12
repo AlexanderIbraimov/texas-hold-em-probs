@@ -24,38 +24,48 @@ Response example:
     "playerStats": [
         {
             "winProb": 0.06882591093117409,
-            "tieProb": {
-                "probability": 0.1592442645074224,
-                "count": 118
-            }
+            "tieProb": [
+                {
+                    "probability": 0.1592442645074224,
+                    "count": 118
+                }
+            ]
         },
         {
             "winProb": 0.06477732793522267,
-            "tieProb": {
-                "probability": 0.06072874493927125,
-                "count": 45
-            }
+            "tieProb": [
+                {
+                    "probability": 0.06072874493927125,
+                    "count": 45
+                }
+            ]
         },
         {
             "winProb": 0.029689608636977057,
-            "tieProb": {
-                "probability": 0.06072874493927125,
-                "count": 45
-            }
+            "tieProb": [
+                {
+                    "probability": 0.06072874493927125,
+                    "count": 45
+                }
+            ]
         },
         {
             "winProb": 0.14304993252361672,
-            "tieProb": {
-                "probability": 0.06072874493927125,
-                "count": 45
-            }
+            "tieProb": [
+                {
+                    "probability": 0.06072874493927125,
+                    "count": 45
+                }
+            ]
         },
         {
             "winProb": 0.5344129554655871,
-            "tieProb": {
-                "probability": 0.1592442645074224,
-                "count": 118
-            }
+            "tieProb": [
+                {
+                    "probability": 0.1592442645074224,
+                    "count": 118
+                }
+            ]
         }
     ],
     "handStats": {
@@ -66,7 +76,7 @@ Response example:
         "flush": 0.05060728744939271,
         "straight": 0.01866846603688709,
         "threeOfAKind": 0.03126405757984705,
-        "twoPairs": 0.203778677462888,
+        "twoPair": 0.203778677462888,
         "onePair": 0.3945119208277103,
         "highCard": 0.12370670265407108
     }
