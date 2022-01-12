@@ -75,10 +75,10 @@ function getProbabilityResult(calc){
     calc.getPlayers().forEach(p=>{
         var handData = {
             'winProb':p.data.wins / iterations,
-            'tieProb':{
+            'tieProb':[{
                 'probability':p.data.ties / iterations,
                 'count':p.data.ties 
-            }
+                }]
         };
         
         royalFlush += p.data.ranks.ROYAL_FLUSH;
@@ -105,7 +105,7 @@ function getProbabilityResult(calc){
             'flush':flush / iterations/ 6,
             'straight':straight / iterations/ 6,
             'threeOfAKind':threeOfAKind / iterations/ 6,
-            'twoPairs':twoPairs / iterations/ 6,
+            'twoPair':twoPairs / iterations/ 6,
             'onePair':onePair / iterations/ 6,
             'highCard':highCard / iterations/ 6
         }
