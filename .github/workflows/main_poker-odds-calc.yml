@@ -1,10 +1,13 @@
-name: Build and deploy Node.js app to Azure Web App - poker-odds-calc
+name: Build and deploy poker-odds-calc
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
 
 jobs:
   build:

@@ -14,19 +14,18 @@ try {
         if(!request.query.playerCards){
             response.send({isSuccess: false, message: 'playerCards cannot be empty'});
         }
-        if(!request.query.tableCards){
-            response.send({isSuccess: false, message: 'tableCards cannot be empty'});
-        }
         try{
             let board = parserTableCards(request.query.tableCards);
             let players = parserPlayerCards(request.query.playerCards);
             let table = new TexasHoldem();
             players.forEach(p=>table.addPlayer(p));
-            table.setBoard(board);
+            if(board.length > 0){
+                table.setBoard(board);
+            }
             response.send(getProbabilityResult(table.calculate()));
         }
         catch(error) {
-            response.send({isSuccess: false, message: error});
+            response.send({isSuccess: false, message: error.message});
         }
     });
     app.listen(port);
@@ -45,6 +44,9 @@ function parserPlayerCards(playerCards) {
 }
 
 function parserTableCards(tableCards){
+    if(tableCards === undefined || tableCards === ''){
+        return [];
+    }
     return tableCards.split(',').filter(c=>c).map(c=>fixCard(c));
 }
 
